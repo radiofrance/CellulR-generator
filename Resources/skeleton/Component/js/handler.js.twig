@@ -1,0 +1,21 @@
+'use strict';
+
+/**
+ * @param {% verbatim %}{{% endverbatim %}{{ component_name }}{% verbatim %}}{% endverbatim %} component
+ * @param {Node} $container
+ * @constructor
+ */
+var Handler = function(component, $container) {
+    this.container = $container;
+    this.component = component;
+};
+
+Handler.prototype.handle = function() {
+    return this;
+};
+
+Handler.prototype.destroy = function() {
+    return this;
+};
+
+module.exports = Handler;

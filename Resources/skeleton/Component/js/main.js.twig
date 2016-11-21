@@ -1,0 +1,36 @@
+"use strict";
+
+rf.component.{{ component_name_var }} = require('./component.js');
+rf.component.{{ component_name_var }}.handler = require('./handler.js');
+
+//init
+var component = undefined,
+    handler = [];
+
+rf.component.eventHandler.subscribe('page.new', function () {
+    var containers = $('.{{ component_name_underscore|replace('_', '-') }}');
+
+    for (var i = 0; i < containers.length; i++) {
+        var container = containers[i];
+        component = component || new rf.component.{{ component_name_var }}();
+        handler[i] = new rf.component.{{ component_name_var }}.handler(component, $(container));
+
+        handler[i].handle();
+    }
+});
+
+rf.component.eventHandler.subscribe('page.exit', function () {
+    for (var i = 0; i < handler.length; i++) {
+        if (handler[i] !== undefined) {
+            handler[i].destroy();
+            delete handler[i];
+        }
+    }
+
+    if (component instanceof rf.component.{{ component_name_var }}) {
+        rf.component.repository.remove(component.name);
+    }
+
+    component = undefined;
+    handler = [];
+});

@@ -1,0 +1,12 @@
+'use strict';
+
+var {{ component_name }} = function () {
+    this.name = '{{ component_name|lower }}';
+    rf.component.repository.register(this);
+};
+
+{{ component_name }}.prototype = Object.create(rf.component.component.prototype);
+{{ component_name }}.prototype = {};
+
+
+module.exports = {{ component_name }};

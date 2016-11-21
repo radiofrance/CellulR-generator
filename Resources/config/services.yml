@@ -1,0 +1,8 @@
+services:
+    rf.wc.generator_command:
+        class: Rf\WebComponent\GeneratorBundle\Command\GenerateWebComponentCommand
+        arguments:
+            - '%kernel.root_dir%'
+            - ''
+        tags:
+            -  { name: console.command }

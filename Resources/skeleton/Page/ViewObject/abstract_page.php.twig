@@ -1,0 +1,26 @@
+<?php
+
+namespace {{ abstract_page_namespace }};
+
+use Symfony\Component\HttpFoundation\RequestStack;
+
+/**
+ * Class AbstractPage.
+ */
+abstract class AbstractPage
+{
+    /**
+     * @var RequestStack
+     */
+    protected $request;
+
+    /**
+     * AbstractPage constructor.
+     *
+     * @param RequestStack $request
+     */
+    public function __construct(RequestStack $request)
+    {
+        $this->request = $request->getMasterRequest();
+    }
+}
