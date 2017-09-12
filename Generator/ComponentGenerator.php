@@ -1,6 +1,6 @@
 <?php
 
-namespace Rf\WebComponent\GeneratorBundle\Generator;
+namespace Rf\CellulR\GeneratorBundle\Generator;
 
 use Symfony\Component\DependencyInjection\Container;
 
@@ -21,7 +21,7 @@ class ComponentGenerator extends DefaultGenerator
     public function generate($env, $replace = false)
     {
         $this->createDirectories();
-        $this->generateViewObject($replace);
+        $this->generateCoreObject($replace);
         $this->generateComponent($env, $replace);
     }
 
@@ -40,10 +40,10 @@ class ComponentGenerator extends DefaultGenerator
 
     /**
      * Create:
-     *      The View object directory
+     *      The Core object directory
      *      The Component directory
      *      The LESS directory inside the Component directory
-     *      The JS directory inside the Component directory
+     *      The JS directory inside the Component directory.
      */
     private function createDirectories()
     {
@@ -56,17 +56,17 @@ class ComponentGenerator extends DefaultGenerator
     }
 
     /**
-     * Generate the View object.
+     * Generate the Core object.
      *
      * @param bool $replace
      */
-    private function generateViewObject($replace)
+    private function generateCoreObject($replace)
     {
         $dirComponent = $this->getPath();
-        $viewObject = "$dirComponent/$this->name.php";
+        $coreObject = "$dirComponent/$this->name.php";
 
-        if (!file_exists($viewObject) || $replace) {
-            $this->renderFile(self::TEMPLATE_DIR_NAME.'/ViewObject/component.php.twig', $viewObject, $this->getParameters());
+        if (!file_exists($coreObject) || $replace) {
+            $this->renderFile(self::TEMPLATE_DIR_NAME.'/CoreObject/component.php.twig', $coreObject, $this->getParameters());
         }
     }
 
@@ -87,7 +87,7 @@ class ComponentGenerator extends DefaultGenerator
         $mainJS = "$dirComponent/js/{$env}.js";
         $componentJS = "$dirComponent/js/component.js";
         $handlerJS = "$dirComponent/js/handler.js";
-        $initFile = function() use ($component) {
+        $initFile = function () use ($component) {
             file_put_contents($component, <<<EOT
 {% spaceless %}
 {% endspaceless %}

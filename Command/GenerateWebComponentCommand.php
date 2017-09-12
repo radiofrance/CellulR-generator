@@ -1,9 +1,9 @@
 <?php
 
-namespace Rf\WebComponent\GeneratorBundle\Command;
+namespace Rf\CellulR\GeneratorBundle\Command;
 
-use Rf\WebComponent\GeneratorBundle\Generator\ComponentGenerator;
-use Rf\WebComponent\GeneratorBundle\Generator\PageGenerator;
+use Rf\CellulR\GeneratorBundle\Generator\ComponentGenerator;
+use Rf\CellulR\GeneratorBundle\Generator\PageGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Container;
 
 /**
- * Class GenerateWebComponentCommand.
+ * Class GenerateCellulRCommand.
  */
 class GenerateWebComponentCommand extends Command
 {
@@ -47,16 +47,16 @@ class GenerateWebComponentCommand extends Command
     {
         $this
             ->setDefinition(array(
-                new InputArgument('name', InputArgument::REQUIRED, 'The web component name'),
-                new InputArgument('type', InputArgument::REQUIRED, 'The web component type: component or page'),
-                new InputArgument('env', InputArgument::OPTIONAL, 'The web component environment', 'main'),
+                new InputArgument('name', InputArgument::REQUIRED, 'The cell name'),
+                new InputArgument('type', InputArgument::REQUIRED, 'The cell type: component or page'),
+                new InputArgument('env', InputArgument::OPTIONAL, 'The cell environment', 'main'),
             ))
-            ->setDescription('Generates a web component')
+            ->setDescription('Generates a cell')
             ->setHelp(<<<EOT
-The <info>generate:wc</info> command helps you generates new component.
+The <info>generate:cell</info> command helps you generates new cell with it's core object.
 EOT
             )
-            ->setName('generate:wc');
+            ->setName('generate:cell');
     }
 
     /**
@@ -72,7 +72,7 @@ EOT
             $name
         );
 
-        switch($type = $input->getArgument('type')) {
+        switch ($type = $input->getArgument('type')) {
             case 'p':
             case 'pag':
             case 'page':
@@ -87,6 +87,7 @@ EOT
                 break;
             default:
                 $io->error(sprintf('The argument %s must be one of theses values: [%s]', 'type', implode(', ', ['component', 'page'])));
+
                 return;
                 break;
 
@@ -109,7 +110,7 @@ EOT
         $generator->generate($input->getArgument('env'), isset($replace) ? $replace : false);
 
         $io->success(sprintf(
-            "The %s %s has been %s",
+            'The %s %s has been %s',
             $type,
             $input->getArgument('name'),
             $exists ? 'replaced' : 'created'

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rf\WebComponent\GeneratorBundle\DependencyInjection;
+namespace Rf\CellulR\GeneratorBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -23,18 +23,18 @@ class GeneratorExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        if (!$container->hasParameter('wc.root_dir')) {
-            throw new ParameterNotFoundException('wc.root_dir');
+        if (!$container->hasParameter('cellulr.root_dir')) {
+            throw new ParameterNotFoundException('cellulr.root_dir');
         }
 
-        if (!$container->hasParameter('wc.component_dir')) {
-            throw new ParameterNotFoundException('wc.component_dir');
+        if (!$container->hasParameter('cellulr.component_dir')) {
+            throw new ParameterNotFoundException('cellulr.component_dir');
         }
 
-        // Inject web component dir path
+        // Inject cell component dir path
         $container
-            ->getDefinition('rf.wc.generator_command')
-            ->replaceArgument(1, $container->getParameter('wc.component_dir'))
+            ->getDefinition('rf.cellulr.generator_command')
+            ->replaceArgument(1, $container->getParameter('cellulr.component_dir'))
         ;
     }
 }

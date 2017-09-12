@@ -1,8 +1,8 @@
 <?php
 
-namespace Rf\WebComponent\GeneratorBundle\Generator;
+namespace Rf\CellulR\GeneratorBundle\Generator;
 
-use Rf\WebComponent\EngineBundle\Utils\UtilsTrait;
+use Rf\CellulR\EngineBundle\Utils\UtilsTrait;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -104,7 +104,7 @@ abstract class DefaultGenerator
     }
 
     /**
-     * Get the Web Component path.
+     * Get the cellulR path.
      *
      * @return string|void
      */
@@ -118,7 +118,7 @@ abstract class DefaultGenerator
     }
 
     /**
-     * Get the Web Component namespace.
+     * Get the cellulR namespace.
      *
      * @return string
      */

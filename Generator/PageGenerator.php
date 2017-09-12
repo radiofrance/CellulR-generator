@@ -1,6 +1,6 @@
 <?php
 
-namespace Rf\WebComponent\GeneratorBundle\Generator;
+namespace Rf\CellulR\GeneratorBundle\Generator;
 
 use Symfony\Component\DependencyInjection\Container;
 
@@ -22,7 +22,7 @@ class PageGenerator extends DefaultGenerator
     {
         $this->createDirectories();
         $this->generateAbstractPage();
-        $this->generateViewObject($replace);
+        $this->generateCoreObject($replace);
         $this->generateComponent($env, $replace);
     }
 
@@ -42,10 +42,10 @@ class PageGenerator extends DefaultGenerator
 
     /**
      * Create:
-     *      The View object directory
+     *      The Core object directory
      *      The Page directory
      *      The LESS directory inside the Page directory
-     *      The JS directory inside the Page directory
+     *      The JS directory inside the Page directory.
      */
     private function createDirectories()
     {
@@ -57,7 +57,7 @@ class PageGenerator extends DefaultGenerator
     }
 
     /**
-     * Generate the abstract page model for the pages' view objects.
+     * Generate the abstract page model for the pages' core objects.
      */
     private function generateAbstractPage()
     {
@@ -65,22 +65,22 @@ class PageGenerator extends DefaultGenerator
         $abstractPage = $dirPage.DIRECTORY_SEPARATOR.'AbstractPage.php';
 
         if (!file_exists($abstractPage)) {
-            $this->renderFile(self::TEMPLATE_DIR_NAME.'/ViewObject/abstract_page.php.twig', $abstractPage, $this->getParameters());
+            $this->renderFile(self::TEMPLATE_DIR_NAME.'/CoreObject/abstract_page.php.twig', $abstractPage, $this->getParameters());
         }
     }
 
     /**
-     * Generate the View object.
+     * Generate the Core object.
      *
      * @param bool $replace
      */
-    private function generateViewObject($replace)
+    private function generateCoreObject($replace)
     {
         $dirPage = $this->getPath();
-        $viewObject = "$dirPage/$this->name.php";
+        $coreObject = "$dirPage/$this->name.php";
 
-        if (!file_exists($viewObject) || $replace) {
-            $this->renderFile(self::TEMPLATE_DIR_NAME.'/ViewObject/page.php.twig', $viewObject, $this->getParameters());
+        if (!file_exists($coreObject) || $replace) {
+            $this->renderFile(self::TEMPLATE_DIR_NAME.'/CoreObject/page.php.twig', $coreObject, $this->getParameters());
         }
     }
 

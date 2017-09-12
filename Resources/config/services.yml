@@ -1,6 +1,6 @@
 services:
-    rf.wc.generator_command:
-        class: Rf\WebComponent\GeneratorBundle\Command\GenerateWebComponentCommand
+    rf.cellulr.generator_command:
+        class: Rf\CellulR\GeneratorBundle\Command\GenerateWebComponentCommand
         arguments:
             - '%kernel.root_dir%'
             - ''

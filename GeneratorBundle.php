@@ -1,6 +1,6 @@
 <?php
 
-namespace Rf\WebComponent\GeneratorBundle;
+namespace Rf\CellulR\GeneratorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

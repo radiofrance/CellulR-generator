@@ -1,8 +1,8 @@
 {
-    "name": "webcomponents/generator-bundle",
+    "name": "radiofrance/cellulr-generator",
     "type": "symfony-bundle",
-    "description": "Generator for web components v3.0",
-    "keywords": ["webcomponent", "symfony-bundle"],
+    "description": "Generator for CellulR",
+    "keywords": ["CellulR", "symfony-bundle"],
     "license": "proprietary",
     "authors": [
         {
@@ -22,20 +22,14 @@
         "symfony/finder": "~2.8|~3.0",
         "symfony/console": "~2.8|~3.0",
         "twig/twig": "~1.15",
-        "webcomponents/engine-bundle": "dev-features/v3"
+        "radiofrance/cellulr-engine": "@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "5.3.2"
     },
     "autoload": {
         "psr-4": {
-            "Rf\\WebComponent\\GeneratorBundle\\": ""
+            "Rf\\CellulR\\GeneratorBundle\\": ""
         }
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://composer.dnm.radiofrance.fr"
-        }
-    ]
+    }
 }

@@ -1,7 +1,7 @@
 GeneratorBundle
 ===============
 
-Le ***generatorBundle*** permet de générer des Web Components en CLI. 
+Le ***generatorBundle*** permet de générer des Cell en CLI. 
 Il nécessite l'[EngineBundle](https://gitlab.dnm.radiofrance.fr/webcomponents/engine-bundle/tree/features/v3/) pour fonctionner.
  
 Documentation
