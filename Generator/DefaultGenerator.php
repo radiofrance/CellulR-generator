@@ -71,7 +71,7 @@ abstract class DefaultGenerator
             'debug' => true,
             'cache' => false,
             'strict_variables' => true,
-            'autoescape' => false
+            'autoescape' => false,
         ));
     }
 
@@ -124,7 +124,7 @@ abstract class DefaultGenerator
      */
     public function getNamespace()
     {
-        return $this->getNamespaceFromDir($this->kernelRootDir, $this->getPath());
+        return $this->getNamespaceFromDir($this->kernelRootDir.'/../src', $this->getPath());
     }
 
     /**
