@@ -8,7 +8,7 @@ var component = undefined,
     handler = [];
 
 rf.component.eventHandler.subscribe('page.new', function () {
-    var containers = $('.{{ component_name_underscore|replace('_', '-') }}');
+    var containers = $('.{{ component_name_underscore|replace({'_': '-'}) }}');
 
     for (var i = 0; i < containers.length; i++) {
         var container = containers[i];
